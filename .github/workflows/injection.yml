@@ -5,8 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check PR title
+        env:
+          title2: ${{ github.event.pull_request.title }}
         run: |
-          title="${{ github.event.pull_request.title }}"
+          title="$title2"
           if [[ $title =~ ^FEATURE ]]; then
           echo "PR title starts with 'FEATURE'"
           exit 0
